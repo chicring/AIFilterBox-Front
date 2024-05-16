@@ -18,6 +18,16 @@ export const router = createRouter({
           path: '/task',
           name: 'task',
           component: () => import('@/views/tasks/index.vue')
+        },
+        {
+          path: '/message',
+          name: 'message',
+          component: () => import('@/views/message/index.vue')
+        },
+        {
+          path: '/setting',
+          name: 'setting',
+          component: () => import('@/views/setting/index.vue')
         }
       ]
     }

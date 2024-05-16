@@ -8,10 +8,11 @@ import ProfileDD from "./ProfileDD.vue";
 
     <v-tabs
       class="ml-5"
+      hide-slider
     >
-        <v-tab>任务</v-tab>
-        <v-tab>消息</v-tab>
-        <v-tab>设置</v-tab>
+        <v-tab to="/task">主页</v-tab>
+        <v-tab to="/message">消息</v-tab>
+        <v-tab to="/setting">设置</v-tab>
     </v-tabs>
 
 

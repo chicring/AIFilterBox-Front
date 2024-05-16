@@ -78,6 +78,15 @@ function getPushIcon(pushType: string) {
             flat
             v-if="selectedItems.length > 0"
           >
+            批量启用
+          </v-btn>
+
+          <v-btn
+            color="primary"
+            rounded="md"
+            flat
+            v-if="selectedItems.length > 0"
+          >
             批量删除
           </v-btn>
 
@@ -93,7 +102,7 @@ function getPushIcon(pushType: string) {
     </v-row>
 
     <v-data-table-server
-      class="mt-4"
+      class="mt-4 border-sm border-opacity-50 border-borderLight"
       sticky
       hover
       show-select
@@ -131,7 +140,7 @@ function getPushIcon(pushType: string) {
                   color="primary"
                   hide-details
                   inset
-                  base-color="lightprimary"
+                  base-color="containerBg"
                   density="compact"
         >
           <template #track-true>

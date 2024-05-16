@@ -29,8 +29,8 @@ const headers : DataTableHeader[] = [
   // { text: '请求体匹配规则', value: 'pattern' },
   { title: '启用', key: 'enable', align: 'start' },
 
-  { title: '触发行为', key: 'action', align: 'center' },
-  { title: '推送类型', key: 'pushType', align: 'center' },
+  { title: '行为', key: 'action', align: 'center' },
+  { title: '推送方式', key: 'pushType', align: 'center' },
   // { text: '发布地址域名', value: 'domain' , align: 'center'},
   { title: '消息id前缀', key: 'prefix' , align: 'center'},
   // { title: '主任务id', value: 'taskId' , align: 'center'},

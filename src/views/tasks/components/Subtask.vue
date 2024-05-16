@@ -5,6 +5,7 @@ import {findSubtaskPage} from "@/api/methods/subtask";
 import EditDialog from "./EditDialog.vue";
 import EmtyPage from "../../error/EmtyPage.vue";
 import {infoToast} from "../../../util/ToastMessage";
+import {MailIcon} from "vue-tabler-icons";
 
 type PageResp = {
   pageSize: number
@@ -36,6 +37,17 @@ async function loadItems({ page, itemsPerPage }: { page: number, itemsPerPage: n
   findSubtaskPage().then((res) => {
     subtasks.value = res
   })
+}
+
+function getPushIcon(pushType: string) {
+  switch (pushType) {
+    case 'mail':
+      return MailIcon
+    case 'sms':
+      return 'SmsIcon'
+    default:
+      return 'EmailIcon'
+  }
 }
 
 </script>
@@ -119,6 +131,7 @@ async function loadItems({ page, itemsPerPage }: { page: number, itemsPerPage: n
                   color="primary"
                   hide-details
                   inset
+                  base-color="lightprimary"
                   density="compact"
         >
           <template #track-true>
@@ -128,6 +141,18 @@ async function loadItems({ page, itemsPerPage }: { page: number, itemsPerPage: n
             <MinusIcon class="mt-1" size="18"></MinusIcon>
           </template>
         </v-switch>
+      </template>
+
+      <template #item.type="{ value }">
+        <v-chip rounded="lg" size="small" color="secondary" class="font-weight-medium">
+          {{value}}
+        </v-chip>
+      </template>
+
+      <template #item.action="{ value }">
+        <v-chip rounded="lg" size="small" color="primary" class="font-weight-medium">
+          {{value}}
+        </v-chip>
       </template>
 
       <template #item.actions="{ item }">
@@ -159,6 +184,9 @@ async function loadItems({ page, itemsPerPage }: { page: number, itemsPerPage: n
         </v-btn>
       </template>
 
+      <template #item.pushType="{ value }">
+        <IconSet :item="getPushIcon(value)"></IconSet>
+      </template>
 
       <template #no-data>
         <EmtyPage></EmtyPage>

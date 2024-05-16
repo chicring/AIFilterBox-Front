@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ConfirmButton: typeof import('./src/components/ConfirmButton.vue')['default']
+    IconSet: typeof import('./src/components/IconSet.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

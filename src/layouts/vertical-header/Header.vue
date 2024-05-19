@@ -9,6 +9,7 @@ import ProfileDD from "./ProfileDD.vue";
     <v-tabs
       class="ml-5"
       hide-slider
+      selected-class="font-weight-bold rounded-xl"
     >
         <v-tab to="/task">主页</v-tab>
         <v-tab to="/message">消息</v-tab>

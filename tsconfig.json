@@ -29,4 +29,5 @@
   ],
   "exclude": ["dist", "node_modules", "cypress"],
   "references": [{ "path": "./tsconfig.node.json" }],
+  "files": ["./components.d.ts"],
 }

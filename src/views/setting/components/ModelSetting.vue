@@ -33,6 +33,9 @@ const GeminiConfigValues = reactive({
   geminiEnableProxy: ''
 });
 
+const ChannelConfig = reactive({
+  aiChannel: ''
+})
 
 
 const options = ref<any>([])
@@ -40,6 +43,8 @@ const options = ref<any>([])
 function loadItems() {
   findAll().then((res) => {
     options.value = res
+
+    ChannelConfig.aiChannel = res.find(option => option.key === 'aiChannel').value
 
     modelConfigKeys.forEach(item => {
       const option = res.find(option => option.key === item.key);
@@ -84,23 +89,25 @@ onMounted(() => {
 
 <template>
   <v-card border="borderLight opacity-50 sm" elevation="0">
-    <v-card-title><span class="text-body-1 font-weight-black">首选模型</span></v-card-title>
-    <v-card-subtitle>支持 OpenAI 格式的模型和 Gemini</v-card-subtitle>
+    <v-card-title><span class="text-body-1 font-weight-black">首选渠道</span></v-card-title>
+    <v-card-subtitle>支持 OpenAI 格式的渠道和 Gemini</v-card-subtitle>
     <v-card-text>
       <v-row dense>
         <V-col cols="12" md="5">
           <v-select
-            label="模型选择"
+            label="渠道选择"
             variant="outlined"
             color="primary"
             bg-color="containerBg"
             dense
+            :items="[ 'openai', 'gemini' ]"
+            v-model="ChannelConfig.aiChannel"
           >
           </v-select>
         </V-col>
 
       </v-row>
-      <v-btn color="primary" variant="flat" rounded="md">保存配置</v-btn>
+      <v-btn color="primary" variant="flat" rounded="md" @click="saveOrUpdate(ChannelConfig)">保存配置</v-btn>
     </v-card-text>
   </v-card>
 

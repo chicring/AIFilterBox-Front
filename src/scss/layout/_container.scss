@@ -10,6 +10,12 @@ html {
     margin: 0 10px;
   }
 }
+@media (max-width: 800px) {
+    .v-main {
+        margin: 0;
+    }
+}
+
 .spacer {
   padding: 100px 0;
 }
@@ -21,10 +27,17 @@ html {
 
 .page-wrapper {
   min-height: calc(100dvh - 70px);
-  padding: 15px;
+  padding: 15px !important;
   border-radius: $border-radius-root;
   background: rgb(var(--v-theme-containerBg));
 }
+
+@media (max-width: 800px) {
+  .page-wrapper {
+    padding: 10px !important;
+  }
+}
+
 $sizes: (
         'display-1': 44px,
         'display-2': 40px,

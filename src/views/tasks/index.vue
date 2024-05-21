@@ -14,11 +14,12 @@ const step = ref(0)
       v-model="step"
       density="comfortable"
       color="primary"
+      selected-class="font-weight-bold text-secondary"
     >
       <v-tab :value="0">
-        任务
+        子任务
       </v-tab>
-      <v-tab :value="1">子任务</v-tab>
+      <v-tab :value="1">任务</v-tab>
     </v-tabs>
 
     <v-tabs-window
@@ -26,11 +27,11 @@ const step = ref(0)
       v-model="step"
     >
       <v-window-item :value="0" :key="0">
-        <Task></Task>
+        <Subtask></Subtask>
       </v-window-item>
 
       <v-window-item :value="1" :key="1">
-        <Subtask></Subtask>
+        <Task></Task>
       </v-window-item>
     </v-tabs-window>
   </v-sheet>

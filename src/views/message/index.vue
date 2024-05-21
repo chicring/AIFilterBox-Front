@@ -15,6 +15,7 @@ type PageResp = {
 const query = ref({
     page: 1,
     size: 12,
+    used: null,
 });
 
 const messages = ref({} as PageResp);
@@ -24,6 +25,7 @@ function findMessages() {
         messages.value = res;
     });
 }
+const selectedTab = ref(0);
 
 onMounted(() => {
     findMessages();
@@ -34,17 +36,17 @@ onMounted(() => {
 
     <v-sheet rounded="md" style="min-height: calc(100vh - 100px)">
         <v-tabs
+          v-model="selectedTab"
             density="comfortable"
             mandatory
             color="secondary"
-
             selected-class="font-weight-bold rounded-xl"
         >
-            <v-tab>全部</v-tab>
+            <v-tab @click.stop="query.used = null; findMessages() ">全部</v-tab>
 
-            <v-tab>已发送</v-tab>
+            <v-tab @click.stop="query.used = true; findMessages() ">已发送</v-tab>
 
-            <v-tab>未发送</v-tab>
+            <v-tab @click.stop="query.used = false; findMessages() ">未发送</v-tab>
 
         </v-tabs>
 

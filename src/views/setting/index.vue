@@ -15,6 +15,7 @@ const step = ref(0)
       v-model="step"
       density="comfortable"
       color="primary"
+      selected-class="font-weight-bold text-secondary"
     >
       <v-tab :value="0">
         <Settings2Icon class="mr-2"></Settings2Icon>

@@ -6,7 +6,7 @@ import {toast} from "vuetify-sonner";
 
 // 创建axios实例
 const service = axios.create({
-    baseURL: 'http://127.0.0.1:8080', // api的base_url
+    baseURL: 'http://192.168.2.107:8080', // api的base_url
     timeout: 5000, // 请求超时时间
 })
 

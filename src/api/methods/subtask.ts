@@ -33,7 +33,7 @@ export function updateSubtask (data: any){
   })
 }
 
-export function deleteSubtask (id: string){
+export function deleteSubtask (id: any){
   return request({
     url: `/subtask/${id}`,
     method: 'delete'
@@ -42,7 +42,7 @@ export function deleteSubtask (id: string){
 
 export function enableSubTask (id: number, enable: boolean){
   return request({
-    url: `/subtask/enabled`,
+    url: `/subtask/enable`,
     method: 'put',
     params: {
       id,

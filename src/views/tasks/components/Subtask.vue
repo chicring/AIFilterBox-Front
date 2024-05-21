@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import headers from "../types/headers";
 import {onMounted, ref} from "vue";
-import {findSubtaskPage} from "@/api/methods/subtask";
+import {enableSubTask, findSubtaskPage} from "@/api/methods/subtask";
 import EditDialog from "./EditDialog.vue";
 import EmtyPage from "../../error/EmtyPage.vue";
 import {infoToast} from "../../../util/ToastMessage";
@@ -36,6 +36,19 @@ async function loadItems({ page, itemsPerPage }: { page: number, itemsPerPage: n
   search.value.size = itemsPerPage
   findSubtaskPage().then((res) => {
     subtasks.value = res
+  })
+}
+
+async function deleteSubtask(id: number) {
+  deleteSubtask(id).then(() => {
+    subtasks.value.list = subtasks.value.list.filter((item) => item.id !== id)
+    infoToast('删除成功')
+  })
+}
+
+async function enable(id: number, enable: boolean){
+  enableSubTask(id, enable).then(() => {
+    infoToast('操作成功')
   })
 }
 
@@ -142,6 +155,7 @@ function getPushIcon(pushType: string) {
                   inset
                   base-color="containerBg"
                   density="compact"
+                  @click="enable(item.id, !item.enable)"
         >
           <template #track-true>
             <CheckIcon class="mt-1" size="18"></CheckIcon>
@@ -175,7 +189,7 @@ function getPushIcon(pushType: string) {
                   flat
                   title="删除提示"
                   content="确定要删除这项内容吗？"
-                  @click.stop.prevent
+                  @confirm="deleteSubtask(item.id)"
                 >
                   <template #prepend>
                     <TrashIcon></TrashIcon>
